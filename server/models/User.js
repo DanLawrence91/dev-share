@@ -36,6 +36,6 @@ const userSchema = new Schema({
 
 // need to add authentication stuff after lecture 9/6/22
 
-const User = model("user", userSchema);
+const User = model("User", userSchema);
 
 module.exports = User;
