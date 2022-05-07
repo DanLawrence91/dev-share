@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const Comment = require("./Comment");
 
 const projectSchema = new Schema({
   title: {
@@ -26,6 +27,7 @@ const projectSchema = new Schema({
     type: String,
     required: true,
   },
+  comments: [Comment],
 });
 
 const Project = model("project", projectSchema);
