@@ -37,7 +37,7 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     projects: [Project]
-    projects(username: String): [Thought]
+    projects(username: String): [Project]
     project(projectId: ID!): Project
   }
 
