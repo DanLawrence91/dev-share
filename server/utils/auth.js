@@ -20,4 +20,8 @@ module.exports = {
       console.log("invalid token");
     }
   },
+  signToken: function ({ email, username, _id }) {
+    const payload = { email, username, _id };
+    return jwt.sign({ data: payload }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXP });
+  },
 };
