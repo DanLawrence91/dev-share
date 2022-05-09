@@ -29,6 +29,32 @@ export const ADD_PROJECT = gql`
   }
 `;
 
+export const UPDATE_PROJECT = gql`
+  mutation updateProject($projectId: ID!, $description: String!, $contributors: String!) {
+    updateProject(projectId: $projectId, description: $description, contributors: $contributors) {
+      _id
+      title
+      description
+      link
+      owner
+      contributors
+      comments {
+        _id
+        commentText
+        commentAuthor
+      }
+    }
+  }
+`;
+
+export const REMOVE_PROJECT = gql`
+  mutation removeProject($projectId: ID!) {
+    removeProject(projectId: $projectId) {
+      projectId
+    }
+  }
+`;
+
 export const ADD_COMMENT = gql`
   mutation addComment($projectId: ID!, $commentText: String!, $commentAuthor: String!) {
     addComment(projectId: $projectId, commentText: $commentText, commentAuthor: $commentAuthor) {
@@ -42,6 +68,15 @@ export const ADD_COMMENT = gql`
         commentText
         createdAt
       }
+    }
+  }
+`;
+
+export const REMOVE_COMMENT = gql`
+  mutation removeComment($projectId: ID!, $commentId: ID!) {
+    removeComment(projectId: $projectId, commentId: $commentId) {
+      projectId
+      commentId
     }
   }
 `;
