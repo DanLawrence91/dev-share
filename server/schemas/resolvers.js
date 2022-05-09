@@ -46,22 +46,52 @@ const resolvers = {
 
       return { token, user };
     },
-    addProject: async (parent, { title, description, link, owner }) => {
-      const project = await Project.create({ title, description, link, owner });
-      await User.findOneAndUpdate({ username: owner }, { $addToSet: { projects: project._id } });
-      return project;
+    // need to add auth to each of below mutations so can only be done when logged in
+    addProject: async (parent, { title, description, link, owner }, context) => {
+      if (context.user) {
+        const project = await Project.create({ title, description, link, owner });
+
+        await User.findOneAndUpdate({ _id: context.user._id }, { $addToSet: { projects: project._id } });
+
+        return project;
+      }
+
+      throw new AuthenticationError("You need to be logged in to add a project");
     },
-    updateProject: async (parent, { projectId, description, contributors }) => {
-      return Project.findOneAndUpdate({ _id: projectId }, { description }, { contributors }, { new: true });
+    updateProject: async (parent, { projectId, description, contributors }, context) => {
+      if (context.user) {
+        return Project.findOneAndUpdate({ _id: projectId }, { description }, { contributors }, { new: true });
+      }
+
+      throw new AuthenticationError("You need to be logged in to edit a project");
     },
-    removeProject: async (parent, { projectId }) => {
-      return Project.findOneAndDelete({ _id: projectId });
+    removeProject: async (parent, { projectId }, context) => {
+      if (context.user) {
+        const project = await Project.findOneAndDelete({
+          _id: projectId,
+          owner: context.user.username,
+        });
+
+        await User.findOneAndUpdate({ _id: context.user._id }, { $pull: { projects: project._id } });
+
+        return project;
+      }
+
+      throw new AuthenticationError("You need to be logged in to delete a project");
     },
-    addComment: async (parent, { projectId, commentText, commentAuthor }) => {
-      return Project.findOneAndUpdate({ _id: projectId }, { $addToSet: { comments: { commentText, commentAuthor } } }, { new: true, runValidators: true });
+    addComment: async (parent, { projectId, commentText, commentAuthor }, context) => {
+      if (context.user) {
+        return Project.findOneAndUpdate({ _id: projectId }, { $addToSet: { comments: { commentText, commentAuthor } } }, { new: true, runValidators: true });
+      }
+
+      throw new AuthenticationError("You need to be logged in to add a comment");
     },
-    removeComment: async (parent, { projectId, commentId }) => {
-      return Project.findOneAndUpdate({ _id: projectId }, { $pull: { comments: { _id: commentId } } }, { new: true });
+    removeComment: async (parent, { projectId, commentId }, context) => {
+      if (context.user) {
+        return Project.findOneAndUpdate({ _id: projectId }, { $pull: { comments: { _id: commentId, commentAuthor: context.user.username } } }, { new: true });
+      }
+
+      throw new AuthenticationError("You need to be logged in to delete a comment");
     },
   },
 };
