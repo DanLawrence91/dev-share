@@ -12,15 +12,15 @@ const projectSchema = new Schema({
     type: String,
     required: "Please leave a description of your project",
     minlength: 1,
-    maxlength: 280,
     trim: true,
   },
-  technology: [
-    {
-      type: String,
-      trim: true,
-    },
-  ],
+  // use tech as an edit to project so can add to this? Or could edit other areas?
+  // technology: [
+  //   {
+  //     type: String,
+  //     trim: true,
+  //   },
+  // ],
   link: {
     type: String,
     required: "Please provide a link to your project repo",
@@ -30,6 +30,10 @@ const projectSchema = new Schema({
   owner: {
     type: String,
     required: true,
+    trim: true,
+  },
+  contributors: {
+    type: String,
     trim: true,
   },
   comments: [
