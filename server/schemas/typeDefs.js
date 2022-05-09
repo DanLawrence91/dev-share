@@ -52,5 +52,3 @@ const typeDefs = gql`
 module.exports = typeDefs;
 
 // owner in tech may be user - need to see how to link best
-// also need to add in auth
-//need to look at mutation edits as well
