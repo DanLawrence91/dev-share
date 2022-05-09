@@ -21,6 +21,7 @@ const projectSchema = new Schema({
   //     trim: true,
   //   },
   // ],
+  // maybe create a createdAT as well so can see how long project been on site?
   link: {
     type: String,
     required: "Please provide a link to your project repo",
