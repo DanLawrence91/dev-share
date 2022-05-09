@@ -14,7 +14,6 @@ const typeDefs = gql`
     _id: ID
     title: String
     description: String
-    technology: String
     link: String
     owner: String
     comments: [Comment]!
