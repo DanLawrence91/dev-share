@@ -1,8 +1,57 @@
+import React from "react";
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import Navbar from "./components/Navigation";
+import Footer from "./components/Footer";
+
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import Projects from "./pages/Projects";
+import Signup from "./pages/Signup";
+import SingleProject from "./pages/SingleProject";
+
+const httpLink = createHttpLink({
+  uri: "/graphql",
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem("id_token");
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
 function App() {
   return (
-    <div>
-      <h1>Hello</h1>
-    </div>
+    <ApolloProvider client={client}>
+      <BrowserRouter>
+        <div>
+          <Navbar />
+          <div>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/dashboard/:username" element={<Dashboard />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/projects/:projectId" element={<SingleProject />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+            </Routes>
+          </div>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </ApolloProvider>
   );
 }
 
