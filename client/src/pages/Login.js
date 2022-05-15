@@ -71,12 +71,12 @@ const Login = (props) => {
               </Stack>
             )}
 
-            {error && <div className="my-3 p-3 bg-danger text-white">{error.message}</div>}
+            {error && <div>{error.message}</div>}
           </div>
         </Box>
       </Stack>
       <Box>
-        New to us?{" "}
+        New to the site?{" "}
         <Link to="/signup">
           <Text color="teal.500" fontWeight="bold">
             Sign Up
