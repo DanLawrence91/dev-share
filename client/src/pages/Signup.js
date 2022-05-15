@@ -5,7 +5,7 @@ import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 
 import Auth from "../utils/auth";
-import { Flex, Heading, Input, Button, InputGroup, Stack, InputLeftElement, Box, Avatar, FormControl } from "@chakra-ui/react";
+import { Flex, Heading, Input, Button, Text, InputGroup, Stack, InputLeftElement, Box, Avatar, FormControl } from "@chakra-ui/react";
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -48,9 +48,9 @@ const Signup = () => {
         <Box minW={{ base: "90%", md: "468px" }}>
           <div>
             {data ? (
-              <p>
-                Success! You may now head <Link to="/">back to the homepage.</Link>
-              </p>
+              <Text>
+                Heading <Link to="/">back to the homepage.</Link>
+              </Text>
             ) : (
               <Stack spacing={4} p="1rem" backgroundColor="whiteAlpha.900" boxShadow="md">
                 <form onSubmit={handleFormSubmit}>

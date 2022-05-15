@@ -46,9 +46,9 @@ const Login = (props) => {
         <Box minW={{ base: "90%", md: "468px" }}>
           <div>
             {data ? (
-              <p>
-                Success! You may now head <Link to="/">back to the homepage.</Link>
-              </p>
+              <Text>
+                Heading <Link to="/">back to the homepage.</Link>
+              </Text>
             ) : (
               <Stack spacing={4} p="1rem" backgroundColor="whiteAlpha.900" boxShadow="md">
                 <form onSubmit={handleFormSubmit}>
