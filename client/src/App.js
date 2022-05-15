@@ -1,9 +1,9 @@
 import React from "react";
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Navbar from "./components/Navigation";
+import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
@@ -35,9 +35,9 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <BrowserRouter>
+      <Router>
         <div>
-          <Navbar />
+          <Header />
           <div>
             <Routes>
               <Route path="/" element={<Home />} />
@@ -50,7 +50,7 @@ function App() {
           </div>
           <Footer />
         </div>
-      </BrowserRouter>
+      </Router>
     </ApolloProvider>
   );
 }
