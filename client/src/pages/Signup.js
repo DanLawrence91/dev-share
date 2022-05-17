@@ -5,7 +5,7 @@ import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 
 import Auth from "../utils/auth";
-import { Flex, Heading, Input, Button, Text, InputGroup, Stack, InputLeftElement, Box, Avatar, FormControl } from "@chakra-ui/react";
+import { Flex, Heading, Input, Button, Text, Stack, Box, Avatar, FormControl, FormLabel } from "@chakra-ui/react";
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -54,31 +54,23 @@ const Signup = () => {
             ) : (
               <Stack spacing={4} p="1rem" backgroundColor="whiteAlpha.900" boxShadow="md">
                 <form onSubmit={handleFormSubmit}>
-                  <FormControl>
-                    <InputGroup p={2}>
-                      <InputLeftElement pointerEvents="none" />
-                      <Input type="text" placeholder="Your username" name="username" value={formState.username} onChange={handleChange} />
-                    </InputGroup>
+                  <FormControl isRequired p={3}>
+                    <FormLabel htmlFor="username">Username</FormLabel>
+                    <Input type="text" placeholder="Your username" name="username" value={formState.username} onChange={handleChange} />
                   </FormControl>
-                  <FormControl>
-                    <InputGroup p={2}>
-                      <InputLeftElement pointerEvents="none" />
-                      <Input type="text" placeholder="Your github username" name="github" value={formState.github} onChange={handleChange} />
-                    </InputGroup>
+                  <FormControl isRequired p={3}>
+                    <FormLabel htmlFor="github">Github</FormLabel>
+                    <Input type="text" placeholder="Your github username" name="github" value={formState.github} onChange={handleChange} />
                   </FormControl>
-                  <FormControl>
-                    <InputGroup p={2}>
-                      <InputLeftElement pointerEvents="none" />
-                      <Input type="email" placeholder="Your email" name="email" value={formState.email} onChange={handleChange} />
-                    </InputGroup>
+                  <FormControl isRequired p={3}>
+                    <FormLabel htmlFor="email">Email</FormLabel>
+                    <Input type="email" placeholder="Your email" name="email" value={formState.email} onChange={handleChange} />
                   </FormControl>
-                  <FormControl>
-                    <InputGroup p={2}>
-                      <InputLeftElement pointerEvents="none" color="gray.300" />
-                      <Input placeholder="Password" name="password" type="password" value={formState.password} onChange={handleChange} />
-                    </InputGroup>
+                  <FormControl isRequired p={3}>
+                    <FormLabel htmlFor="password">Password</FormLabel>
+                    <Input placeholder="Password" name="password" type="password" value={formState.password} onChange={handleChange} />
                   </FormControl>
-                  <Button m={2} borderRadius={0} type="submit" variant="solid" colorScheme="teal" width={"full"}>
+                  <Button borderRadius={0} type="submit" variant="solid" colorScheme="teal" width={"full"}>
                     Sign up
                   </Button>
                 </form>

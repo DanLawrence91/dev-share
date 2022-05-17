@@ -31,7 +31,7 @@ const resolvers = {
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
-      const loginError = "Incorrect credentials";
+      const loginError = "Incorrect email or password";
       if (!user) {
         throw new AuthenticationError(loginError);
       }
