@@ -61,3 +61,21 @@ export const QUERY_SINGLE_PROJECT = gql`
     }
   }
 `;
+
+export const QUERY_ME = gql`
+  query me {
+    me {
+      _id
+      username
+      email
+      github
+      projects {
+        _id
+        title
+        description
+        link
+        owner
+      }
+    }
+  }
+`;

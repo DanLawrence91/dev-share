@@ -46,10 +46,13 @@ const resolvers = {
 
       return { token, user };
     },
-    // need to add auth to each of below mutations so can only be done when logged in
-    addProject: async (parent, { title, description, link, owner }, context) => {
+    addProject: async (parent, { title, description, link, owner, contributors }, context) => {
       if (context.user) {
-        const project = await Project.create({ title, description, link, owner });
+        const project = await Project.create({ title, description, link, owner, contributors });
+        console.log(context.user);
+        console.log(context.user._id);
+        console.log(project);
+        console.log(project._id);
 
         await User.findOneAndUpdate({ _id: context.user._id }, { $addToSet: { projects: project._id } });
 
