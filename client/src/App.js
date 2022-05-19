@@ -9,7 +9,7 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
-import Projects from "./pages/Projects";
+// import Projects from "./pages/Projects";
 import Signup from "./pages/Signup";
 import SingleProject from "./pages/SingleProject";
 
@@ -41,9 +41,8 @@ function App() {
           <div>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/dashboard/:username" element={<Dashboard />} />
               <Route path="/me" element={<Dashboard />} />
-              <Route path="/projects" element={<Projects />} />
               <Route path="/projects/:projectId" element={<SingleProject />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />

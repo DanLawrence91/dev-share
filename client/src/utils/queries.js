@@ -29,30 +29,31 @@ export const QUERY_PROJECTS = gql`
   }
 `;
 
-export const QUERY_USER_PROJECT = gql`
-  query getUserProjects($username: String!) {
-    projectUser(username: $username) {
-      _id
-      title
-      description
-      link
-      comments {
-        _id
-        commentText
-        commentAuthor
-      }
-    }
-  }
-`;
+// export const QUERY_USER_PROJECT = gql`
+//   query getUserProjects($username: String!) {
+//     projectUser(username: $username) {
+//       _id
+//       title
+//       description
+//       link
+//       comments {
+//         _id
+//         commentText
+//         commentAuthor
+//       }
+//     }
+//   }
+// `;
 
 export const QUERY_SINGLE_PROJECT = gql`
   query getSingleProject($projectId: ID!) {
-    projectUser(projectId: $projectId) {
+    project(projectId: $projectId) {
       _id
       title
       description
       link
       owner
+      contributors
       comments {
         _id
         commentText
@@ -74,6 +75,7 @@ export const QUERY_ME = gql`
         title
         description
         link
+        contributors
         owner
       }
     }

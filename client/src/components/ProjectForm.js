@@ -29,11 +29,11 @@ const ProjectForm = () => {
         console.error(e);
       }
 
-      // const { me } = cache.readQuery({ query: QUERY_ME });
-      // cache.writeQuery({
-      //   query: QUERY_ME,
-      //   data: { me: { ...me, projects: [...me.projects, addProject] } },
-      // });
+      const { me } = cache.readQuery({ query: QUERY_ME });
+      cache.writeQuery({
+        query: QUERY_ME,
+        data: { me: { ...me, projects: [...me.projects, addProject] } },
+      });
     },
   });
 
@@ -60,6 +60,8 @@ const ProjectForm = () => {
         owner: "",
         contributors: "",
       });
+
+      window.location.reload();
     } catch (e) {
       console.error(e);
     }

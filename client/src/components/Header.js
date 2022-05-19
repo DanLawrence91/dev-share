@@ -22,12 +22,12 @@ function Header() {
           <Link to="/">
             <Text p={5}>Home</Text>
           </Link>
-          <Link to="/dashboard">
+          <Link to="/me">
             <Text p={5}>Dashboard</Text>
           </Link>
-          <Link to="/projects">
+          {/* <Link to="/projects">
             <Text p={5}>Projects</Text>
-          </Link>
+          </Link> */}
           <Link onClick={logout} to="/">
             <Text p={5}>Logout</Text>
           </Link>
@@ -36,12 +36,6 @@ function Header() {
         <Flex align="center" direction={{ base: "column", md: "row" }}>
           <Link to="/">
             <Text p={5}>Home</Text>
-          </Link>
-          <Link to="/dashboard">
-            <Text p={5}>Dashboard</Text>
-          </Link>
-          <Link to="/projects">
-            <Text p={5}>Projects</Text>
           </Link>
           <Link to="/login">
             <Text p={5}>Login</Text>

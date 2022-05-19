@@ -69,17 +69,17 @@ export const REMOVE_PROJECT = gql`
 `;
 
 export const ADD_COMMENT = gql`
-  mutation addComment($projectId: ID!, $commentText: String!, $commentAuthor: String!) {
-    addComment(projectId: $projectId, commentText: $commentText, commentAuthor: $commentAuthor) {
+  mutation addComment($projectId: ID!, $commentText: String!) {
+    addComment(projectId: $projectId, commentText: $commentText) {
       _id
       title
       description
       link
       owner
+      contributors
       comments {
         _id
         commentText
-        createdAt
       }
     }
   }
