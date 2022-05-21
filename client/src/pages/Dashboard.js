@@ -49,6 +49,11 @@ const Dashboard = () => {
           <Text color={"gray.500"} fontSize={"lg"}>
             Here you can see a list of {userParam ? `${user.username}'s` : "your"} current projects listed that are looking for people to collaborate with.
           </Text>
+          {userParam && (
+            <Text color={"gray.500"} fontSize={"lg"}>
+              Contact them on {user.email} to get collaborating!
+            </Text>
+          )}
           {!userParam && (
             <Text color={"gray.500"} fontSize={"lg"}>
               {" "}
