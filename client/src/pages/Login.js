@@ -39,10 +39,10 @@ const Login = (props) => {
   };
 
   return (
-    <Flex flexDirection="column" width="100wh" height="100vh" backgroundColor="gray.200" justifyContent="center" alignItems="center">
+    <Flex flexDirection="column" height="100vh" backgroundColor="gray.200" justifyContent="center" alignItems="center">
       <Stack flexDir="column" mb="2" justifyContent="center" alignItems="center">
-        <Avatar bg="teal.500" />
-        <Heading color="teal.400">Welcome</Heading>
+        <Avatar bg="blue.500" />
+        <Heading color="blue.400">Welcome</Heading>
         <Box minW={{ base: "90%", md: "468px" }}>
           <div>
             {data ? (
@@ -60,7 +60,7 @@ const Login = (props) => {
                     <FormLabel htmlFor="password">Password</FormLabel>
                     <Input placeholder="Password" name="password" type="password" value={formState.password} onChange={handleChange} />
                   </FormControl>
-                  <Button borderRadius={0} type="submit" variant="solid" colorScheme="teal" width={"full"}>
+                  <Button borderRadius={0} type="submit" variant="solid" colorScheme="blue" width={"full"}>
                     Login
                   </Button>
                 </form>
@@ -74,7 +74,7 @@ const Login = (props) => {
       <Box>
         New to the site?{" "}
         <Link to="/signup">
-          <Text color="teal.500" fontWeight="bold">
+          <Text color="blue.500" fontWeight="bold">
             Sign Up
           </Text>
         </Link>
