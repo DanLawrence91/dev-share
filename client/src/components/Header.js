@@ -14,7 +14,7 @@ function Header() {
     <Flex as="nav" direction={{ base: "column", lg: "row" }} w="100vw" align="center" justify="space-between" wrap="wrap" p={8} color="blue.700" bg="blue.50">
       <Flex align="center">
         <Heading ml={8} size="md" fontSize="6xl" fontWeight="bold" color="blue.700">
-          Collaborate your work!
+          Project Share!{" "}
         </Heading>
       </Flex>
       {Auth.loggedIn() ? (

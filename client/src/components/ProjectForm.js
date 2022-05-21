@@ -5,7 +5,7 @@ import { ADD_PROJECT } from "../utils/mutations";
 import { QUERY_PROJECTS, QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
 
-import { Heading, Input, Button, Stack, FormControl, FormLabel, Textarea } from "@chakra-ui/react";
+import { Heading, Input, Button, Stack, FormControl, FormLabel, Textarea, Radio, RadioGroup, Flex } from "@chakra-ui/react";
 
 const ProjectForm = () => {
   const [formState, setFormState] = useState({
@@ -14,7 +14,10 @@ const ProjectForm = () => {
     link: "",
     owner: "",
     contributors: "",
+    technology: "",
   });
+
+  console.log(formState.technology);
 
   const [addProject, { error }] = useMutation(ADD_PROJECT, {
     update(cache, { data: { addProject } }) {
@@ -39,7 +42,6 @@ const ProjectForm = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     setFormState({ ...formState, [name]: value });
   };
 
@@ -59,6 +61,7 @@ const ProjectForm = () => {
         link: "",
         owner: "",
         contributors: "",
+        technology: "",
       });
 
       window.location.reload();
@@ -95,7 +98,40 @@ const ProjectForm = () => {
                 <FormLabel htmlFor="contributors">Contributors</FormLabel>
                 <Input placeholder="Please enter any contributors" name="contributors" type="text" value={formState.contributors} onChange={handleChange} />
               </FormControl>
-              <Button borderRadius={0} type="submit" variant="solid" colorScheme="teal" width={"full"}>
+              <RadioGroup p={3} value={formState.technology}>
+                <FormLabel htmlFor="technology">Main Language:</FormLabel>
+                <Flex direction={"row"} justifyContent={"space-around"} p={2}>
+                  <Stack>
+                    <Radio value="JavaScript" onChange={setFormState.technology}>
+                      JavaScript
+                    </Radio>
+                    <Radio value="Java" onChange={setFormState.technology}>
+                      Java
+                    </Radio>
+                    <Radio value="Python" onChange={setFormState.technology}>
+                      Python
+                    </Radio>
+                    <Radio value="TypeScript" onChange={setFormState.technology}>
+                      TypeScript
+                    </Radio>
+                  </Stack>
+                  <Stack>
+                    <Radio value="C#" onChange={setFormState.technology}>
+                      C#
+                    </Radio>
+                    <Radio value="PHP" onChange={setFormState.technology}>
+                      PHP
+                    </Radio>
+                    <Radio value="Swift" onChange={setFormState.technology}>
+                      Swift
+                    </Radio>
+                    <Radio value="Ruby" onChange={setFormState.technology}>
+                      Ruby
+                    </Radio>
+                  </Stack>
+                </Flex>
+              </RadioGroup>
+              <Button borderRadius={0} type="submit" variant="solid" colorScheme="blue" width={"full"}>
                 Add Project
               </Button>
             </form>

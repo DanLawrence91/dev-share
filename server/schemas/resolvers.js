@@ -13,10 +13,6 @@ const resolvers = {
     projects: async () => {
       return Project.find();
     },
-    // projectUser: async (parent, { username }) => {
-    //   const params = username ? { username } : {};
-    //   return Project.find(params);
-    // },
     project: async (parent, { projectId }) => {
       return Project.findOne({ _id: projectId });
     },
@@ -52,13 +48,9 @@ const resolvers = {
 
       return { token, user };
     },
-    addProject: async (parent, { title, description, link, owner, contributors }, context) => {
+    addProject: async (parent, { title, description, link, owner, contributors, technology }, context) => {
       if (context.user) {
-        const project = await Project.create({ title, description, link, owner, contributors });
-        console.log(context.user);
-        console.log(context.user._id);
-        console.log(project);
-        console.log(project._id);
+        const project = await Project.create({ title, description, link, owner, contributors, technology });
 
         await User.findOneAndUpdate({ _id: context.user._id }, { $addToSet: { projects: project._id } });
 
@@ -89,7 +81,6 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in to delete a project");
     },
     addComment: async (parent, { projectId, commentText }, context) => {
-      //return Project.findOneAndUpdate({ _id: projectId }, { $addToSet: { comments: { commentText, commentAuthor } } }, { new: true, runValidators: true });
       if (context.user) {
         return Project.findOneAndUpdate(
           { _id: projectId },

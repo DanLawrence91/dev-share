@@ -1,52 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Heading, Box, Center, Text, Stack, Button } from "@chakra-ui/react";
+import { Box, Flex, Text, Stack, Button, Heading, Badge } from "@chakra-ui/react";
 
 const ProjectsList = ({ projects }) => {
-  // if (projects.length === 0) {
-  //   return (
-  //     <div>
-  //       <Heading ml={20} my={50} fontSize={"xl"} fontFamily={"body"}>
-  //         No Projects have been added yet!
-  //       </Heading>
-  //     </div>
-  //   );
-  // }
-
   return (
     <div>
-      {projects &&
-        projects.map((project) => (
-          <div key={project._id}>
-            <Center py={6} px={20}>
-              <Box maxW={"320px"} w={"full"} bg={"green.50"} boxShadow={"2xl"} rounded={"lg"} p={6} textAlign={"center"}>
+      <Flex direction={"row"} wrap={"wrap"}>
+        {projects &&
+          projects.map((project) => (
+            <Flex py={6} key={project._id} mx={10} justifyContent={"center"}>
+              <Box maxW={"320px"} w={"full"} bg={"blue.50"} boxShadow={"2xl"} rounded={"lg"} p={6} textAlign={"center"}>
+                <Heading fontSize={"md"}>{project.title}</Heading>
                 <Text textAlign={"center"} color={"gray.700"} p={2}>
                   {project.description}
                 </Text>
 
-                {/* <Stack align={'center'} justify={'center'} direction={'row'} mt={6}>
-          <Badge
-            px={2}
-            py={1}
-            bg={useColorModeValue('gray.50', 'gray.800')}
-            fontWeight={'400'}>
-            #art
-          </Badge>
-          <Badge
-            px={2}
-            py={1}
-            bg={useColorModeValue('gray.50', 'gray.800')}
-            fontWeight={'400'}>
-            #photography
-          </Badge>
-          <Badge
-            px={2}
-            py={1}
-            bg={useColorModeValue('gray.50', 'gray.800')}
-            fontWeight={'400'}>
-            #music
-          </Badge>
-        </Stack> */}
+                <Stack align={"center"} justify={"center"} direction={"row"} mt={6}>
+                  <Badge px={2} py={1} bg={"gray.50"} fontWeight={"400"}>
+                    {project.technology}
+                  </Badge>
+                </Stack>
 
                 <Button
                   flex={1}
@@ -59,9 +32,9 @@ const ProjectsList = ({ projects }) => {
                   <Link to={`/projects/${project._id}`}>Check out this project</Link>
                 </Button>
               </Box>
-            </Center>
-          </div>
-        ))}
+            </Flex>
+          ))}
+      </Flex>
     </div>
   );
 };

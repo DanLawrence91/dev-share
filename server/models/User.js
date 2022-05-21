@@ -31,8 +31,6 @@ const userSchema = new Schema({
   ],
 });
 
-// need to add authentication stuff after lecture 9/6/22
-
 userSchema.pre("save", async function (next) {
   if (this.isNew || this.isModified("password")) {
     const saltRounds = 10;

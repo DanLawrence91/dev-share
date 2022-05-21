@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Box, Heading, Container, Text, Button, Stack, Icon, useColorModeValue, createIcon } from "@chakra-ui/react";
+import { Box, Heading, Container, Text, Button, Stack } from "@chakra-ui/react";
 
 const Home = () => {
   return (

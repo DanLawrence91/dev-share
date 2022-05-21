@@ -14,8 +14,6 @@ const Dashboard = () => {
     variables: { username: userParam },
   });
   const user = data?.me || data?.user || {};
-  console.log(user);
-  console.log(userParam);
 
   if (Auth.loggedIn && Auth.getProfile().data.username === userParam) {
     return <Navigate to="/me" />;
@@ -49,8 +47,14 @@ const Dashboard = () => {
             {userParam ? `${user.username}'s` : "Your"} Profile
           </Text>
           <Text color={"gray.500"} fontSize={"lg"}>
-            Here you can see a list of {userParam ? `${user.username}'s` : "your"} current projects listed that are looking for people to collaborate with
+            Here you can see a list of {userParam ? `${user.username}'s` : "your"} current projects listed that are looking for people to collaborate with.
           </Text>
+          {!userParam && (
+            <Text color={"gray.500"} fontSize={"lg"}>
+              {" "}
+              Add new projects using the form on the right.
+            </Text>
+          )}
           <Stack spacing={4} divider={<StackDivider borderColor={"gray.100"} />}>
             <ProjectsList projects={user.projects} />
           </Stack>

@@ -25,25 +25,10 @@ export const QUERY_PROJECTS = gql`
       description
       link
       owner
+      technology
     }
   }
 `;
-
-// export const QUERY_USER_PROJECT = gql`
-//   query getUserProjects($username: String!) {
-//     projectUser(username: $username) {
-//       _id
-//       title
-//       description
-//       link
-//       comments {
-//         _id
-//         commentText
-//         commentAuthor
-//       }
-//     }
-//   }
-// `;
 
 export const QUERY_SINGLE_PROJECT = gql`
   query getSingleProject($projectId: ID!) {
