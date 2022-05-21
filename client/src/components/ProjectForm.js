@@ -17,8 +17,6 @@ const ProjectForm = () => {
     technology: "",
   });
 
-  console.log(formState.technology);
-
   const [addProject, { error }] = useMutation(ADD_PROJECT, {
     update(cache, { data: { addProject } }) {
       try {
@@ -98,39 +96,41 @@ const ProjectForm = () => {
                 <FormLabel htmlFor="contributors">Contributors</FormLabel>
                 <Input placeholder="Please enter any contributors" name="contributors" type="text" value={formState.contributors} onChange={handleChange} />
               </FormControl>
-              <RadioGroup p={3} value={formState.technology}>
-                <FormLabel htmlFor="technology">Main Language:</FormLabel>
-                <Flex direction={"row"} justifyContent={"space-around"} p={2}>
-                  <Stack>
-                    <Radio value="JavaScript" onChange={setFormState.technology}>
-                      JavaScript
-                    </Radio>
-                    <Radio value="Java" onChange={setFormState.technology}>
-                      Java
-                    </Radio>
-                    <Radio value="Python" onChange={setFormState.technology}>
-                      Python
-                    </Radio>
-                    <Radio value="TypeScript" onChange={setFormState.technology}>
-                      TypeScript
-                    </Radio>
-                  </Stack>
-                  <Stack>
-                    <Radio value="C#" onChange={setFormState.technology}>
-                      C#
-                    </Radio>
-                    <Radio value="PHP" onChange={setFormState.technology}>
-                      PHP
-                    </Radio>
-                    <Radio value="Swift" onChange={setFormState.technology}>
-                      Swift
-                    </Radio>
-                    <Radio value="Ruby" onChange={setFormState.technology}>
-                      Ruby
-                    </Radio>
-                  </Stack>
-                </Flex>
-              </RadioGroup>
+              <FormControl isRequired p={3}>
+                <RadioGroup value={formState.technology}>
+                  <FormLabel htmlFor="technology">Main Language:</FormLabel>
+                  <Flex direction={"row"} justifyContent={"space-around"} p={2}>
+                    <Stack>
+                      <Radio name="technology" value="JavaScript" onChange={handleChange}>
+                        JavaScript
+                      </Radio>
+                      <Radio name="technology" value="Java" onChange={handleChange}>
+                        Java
+                      </Radio>
+                      <Radio name="technology" value="Python" onChange={handleChange}>
+                        Python
+                      </Radio>
+                      <Radio name="technology" value="TypeScript" onChange={handleChange}>
+                        TypeScript
+                      </Radio>
+                    </Stack>
+                    <Stack>
+                      <Radio name="technology" value="C#" onChange={handleChange}>
+                        C#
+                      </Radio>
+                      <Radio name="technology" value="PHP" onChange={handleChange}>
+                        PHP
+                      </Radio>
+                      <Radio name="technology" value="Swift" onChange={handleChange}>
+                        Swift
+                      </Radio>
+                      <Radio name="technology" value="Ruby" onChange={handleChange}>
+                        Ruby
+                      </Radio>
+                    </Stack>
+                  </Flex>
+                </RadioGroup>
+              </FormControl>
               <Button borderRadius={0} type="submit" variant="solid" colorScheme="blue" width={"full"}>
                 Add Project
               </Button>

@@ -15,9 +15,9 @@ const ProjectsList = ({ projects }) => {
                   {project.description}
                 </Text>
 
-                <Stack align={"center"} justify={"center"} direction={"row"} mt={6}>
-                  <Badge px={2} py={1} bg={"gray.50"} fontWeight={"400"}>
-                    {project.technology}
+                <Stack align={"center"} justify={"center"} direction={"row"} mb={6}>
+                  <Badge px={2} py={1} bg={"gray.200"} fontWeight={"400"}>
+                    #{project.owner}
                   </Badge>
                 </Stack>
 
