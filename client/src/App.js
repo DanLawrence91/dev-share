@@ -8,6 +8,7 @@ import Header from "./components/Header";
 
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
+import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import Projects from "./pages/Projects";
 import Signup from "./pages/Signup";
@@ -41,7 +42,7 @@ function App() {
           <div>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/dashboard/:username" element={<Dashboard />} />
+              <Route path="/profile/:username" element={<Profile />} />
               <Route path="/me" element={<Dashboard />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/projects/:projectId" element={<SingleProject />} />

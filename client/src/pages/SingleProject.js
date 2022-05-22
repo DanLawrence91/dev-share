@@ -29,6 +29,10 @@ const SingleProject = () => {
     textDecoration: "underline",
   };
 
+  const username = {
+    textDecoration: "underline",
+  };
+
   const Feature = ({ text, icon }) => {
     return (
       <Stack direction={"row"} align={"center"}>
@@ -44,15 +48,22 @@ const SingleProject = () => {
     <div>
       {Auth.loggedIn() ? (
         <>
-          <Heading fontSize={"3xl"} m={10} color={"blue.700"}>
-            <Link to={`/dashboard/${project.owner}`}>{project.owner}</Link> is looking for assistance with their project {project.title}
+          <Heading fontSize={"3xl"} mx={10} mt={5} color={"blue.700"} fontStyle={"italic"}>
+            <Link style={username} to={`/profile/${project.owner}`}>
+              {project.owner}
+            </Link>{" "}
+            is looking for assistance with their project {project.title}
           </Heading>
-          <Stack spacing={2} divider={<StackDivider borderColor={"gray.100"} />}>
-            <Text m={2}>Please see some more information regarding the project below:</Text>
+          <Text fontSize={"md"} mx={10} color={"blue.200"}>
+            (Click on their username to see their profile with all their current projects listed)
+          </Text>
+          <Stack spacing={2} divider={<StackDivider borderColor={"gray.100"} />} p={3}>
+            <Text mx={4}>Please see some more information regarding the project below:</Text>
 
             <Feature icon={<Icon as={MdDescription} color={"yellow.500"} w={5} h={5} />} text={project.description} />
             <Feature icon={<Icon as={MdShare} color={"purple.500"} w={5} h={5} />} text={`People currently contributing to this project include: ${project.contributors}`} />
-            <Feature icon={<Icon as={IoLogoGithub} w={8} h={8} />} text={`Follow this link to the github repository: <a href=${project.link}>Github repo</a>`} />
+            {/* Need to add functioning github link here */}
+            <Feature icon={<Icon as={IoLogoGithub} w={7} h={7} />} text={`Follow this link to the github repository: <a href=${project.link}>Github repo</a>`} />
             <Feature icon={<Icon as={MdComment} w={5} h={5} />} text={`Here is what others thing of the project: `} />
             <Comments comments={project.comments} />
             <CommentForm projectId={project._id} />

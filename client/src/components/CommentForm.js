@@ -48,9 +48,6 @@ const CommentForm = ({ projectId }) => {
           {error && <span>{error.message}</span>}
           <form onSubmit={handleFormSubmit}>
             <FormControl py={2}>
-              <FormLabel htmlFor="comment" px={5}>
-                Add you comment here:
-              </FormLabel>
               <Textarea type={"text"} m={2} w={"3xl"} name="commentText" placeholder="Comments..." value={commentText} onChange={handleChange} />
             </FormControl>
             <Text px={5}>Character Count = {characterCount}/280</Text>

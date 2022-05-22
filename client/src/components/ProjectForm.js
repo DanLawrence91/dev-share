@@ -85,7 +85,7 @@ const ProjectForm = () => {
                 <Textarea type="text" placeholder="Project description" name="description" value={formState.description} onChange={handleChange} />
               </FormControl>
               <FormControl isRequired p={3}>
-                <FormLabel htmlFor="link">Link</FormLabel>
+                <FormLabel htmlFor="link">Link to repository</FormLabel>
                 <Input placeholder="Project Link" name="link" type="text" value={formState.link} onChange={handleChange} />
               </FormControl>
               <FormControl isRequired p={3}>
