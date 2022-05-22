@@ -31,9 +31,9 @@ const SingleProject = () => {
     <div>
       {Auth.loggedIn() ? (
         <>
-          <h3>
-            {project.owner} is looking for assistance with their project {project.title}
-          </h3>
+          <Heading>
+            <Link to={`/dashboard/${project.owner}`}>{project.owner}</Link> is looking for assistance with their project {project.title}
+          </Heading>
           <p>Please see some more information regarding the project below:</p>
           <br />
           <p>{project.description}</p>

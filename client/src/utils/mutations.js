@@ -78,6 +78,7 @@ export const ADD_COMMENT = gql`
       link
       owner
       contributors
+      technology
       comments {
         _id
         commentText

@@ -17,7 +17,7 @@ const ProjectsList = ({ projects }) => {
 
                 <Stack align={"center"} justify={"center"} direction={"row"} mb={6}>
                   <Badge px={2} py={1} bg={"gray.200"} fontWeight={"400"}>
-                    #{project.owner}
+                    #{project.technology}
                   </Badge>
                 </Stack>
 

@@ -12,6 +12,8 @@ export const QUERY_USER = gql`
         title
         description
         link
+        technology
+        contributors
       }
     }
   }
@@ -26,6 +28,7 @@ export const QUERY_PROJECTS = gql`
       link
       owner
       technology
+      contributors
     }
   }
 `;
@@ -39,6 +42,7 @@ export const QUERY_SINGLE_PROJECT = gql`
       link
       owner
       contributors
+      technology
       comments {
         _id
         commentText
@@ -61,6 +65,7 @@ export const QUERY_ME = gql`
         description
         link
         contributors
+        technology
         owner
       }
     }
