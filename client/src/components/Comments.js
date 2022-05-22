@@ -1,8 +1,13 @@
+import { Heading } from "@chakra-ui/react";
 import React from "react";
 
 const Comments = ({ comments = [] }) => {
   if (!comments.length) {
-    return <h3>No comments yet</h3>;
+    return (
+      <Heading fontSize={"lg"} p={3}>
+        No comments yet
+      </Heading>
+    );
   }
 
   return (

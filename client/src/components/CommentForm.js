@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_COMMENT } from "../utils/mutations";
+import { Button, FormControl, FormLabel, Heading, Text, Textarea } from "@chakra-ui/react";
 import Auth from "../utils/auth";
 
 const CommentForm = ({ projectId }) => {
@@ -38,26 +39,30 @@ const CommentForm = ({ projectId }) => {
 
   return (
     <div>
-      <h4>What are your thoughts on this project?</h4>
+      <Heading px={5} fontSize={"lg"}>
+        What are your thoughts on this project?
+      </Heading>
 
       {Auth.loggedIn() ? (
         <>
-          <p>Character Count = {characterCount}/280</p>
           {error && <span>{error.message}</span>}
           <form onSubmit={handleFormSubmit}>
-            <div>
-              <textarea name="commentText" placeholder="Add your comment..." value={commentText} onChange={handleChange}></textarea>
-            </div>
-
-            <div>
-              <button type="submit">Add Comment</button>
-            </div>
+            <FormControl py={2}>
+              <FormLabel htmlFor="comment" px={5}>
+                Add you comment here:
+              </FormLabel>
+              <Textarea type={"text"} m={2} w={"3xl"} name="commentText" placeholder="Comments..." value={commentText} onChange={handleChange} />
+            </FormControl>
+            <Text px={5}>Character Count = {characterCount}/280</Text>
+            <Button flex={1} fontSize={"sm"} rounded={"full"} _focus={{ bg: "gray.200" }} type="submit" m={2}>
+              Add Comment
+            </Button>
           </form>
         </>
       ) : (
-        <p>
+        <Text>
           You need to be logged in to share your thoughts. Please <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-        </p>
+        </Text>
       )}
     </div>
   );

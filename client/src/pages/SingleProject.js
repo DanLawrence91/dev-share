@@ -7,7 +7,9 @@ import Comments from "../components/Comments";
 
 import { QUERY_SINGLE_PROJECT } from "../utils/queries";
 import Auth from "../utils/auth";
-import { Heading, Text } from "@chakra-ui/react";
+import { Heading, Text, Icon, Stack, Flex, StackDivider } from "@chakra-ui/react";
+import { IoLogoGithub } from "react-icons/io5";
+import { MdDescription, MdShare, MdComment } from "react-icons/md";
 
 const SingleProject = () => {
   const { projectId } = useParams();
@@ -27,29 +29,34 @@ const SingleProject = () => {
     textDecoration: "underline",
   };
 
+  const Feature = ({ text, icon }) => {
+    return (
+      <Stack direction={"row"} align={"center"}>
+        <Flex w={8} h={8} align={"center"} justify={"center"} rounded={"full"}>
+          {icon}
+        </Flex>
+        <Text fontWeight={600}>{text}</Text>
+      </Stack>
+    );
+  };
+
   return (
     <div>
       {Auth.loggedIn() ? (
         <>
-          <Heading>
+          <Heading fontSize={"3xl"} m={10} color={"blue.700"}>
             <Link to={`/dashboard/${project.owner}`}>{project.owner}</Link> is looking for assistance with their project {project.title}
           </Heading>
-          <p>Please see some more information regarding the project below:</p>
-          <br />
-          <p>{project.description}</p>
-          <p>People currently contributing to this project include: {project.contributors}</p>
-          <p>
-            Follow this link to the github repository: <a href={project.link}>Github repo</a>
-          </p>
-          <br />
-          <div>
-            <p>Here is what others thing of the project: </p>
+          <Stack spacing={2} divider={<StackDivider borderColor={"gray.100"} />}>
+            <Text m={2}>Please see some more information regarding the project below:</Text>
+
+            <Feature icon={<Icon as={MdDescription} color={"yellow.500"} w={5} h={5} />} text={project.description} />
+            <Feature icon={<Icon as={MdShare} color={"purple.500"} w={5} h={5} />} text={`People currently contributing to this project include: ${project.contributors}`} />
+            <Feature icon={<Icon as={IoLogoGithub} w={8} h={8} />} text={`Follow this link to the github repository: <a href=${project.link}>Github repo</a>`} />
+            <Feature icon={<Icon as={MdComment} w={5} h={5} />} text={`Here is what others thing of the project: `} />
             <Comments comments={project.comments} />
-          </div>
-          <div>
-            <p>Have your say on this project or ask questions if you want to know more: </p>
             <CommentForm projectId={project._id} />
-          </div>
+          </Stack>
         </>
       ) : (
         <Text fontSize={"lg"} p={10}>
