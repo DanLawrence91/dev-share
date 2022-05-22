@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_COMMENT } from "../utils/mutations";
-import { Button, FormControl, FormLabel, Heading, Text, Textarea } from "@chakra-ui/react";
+import { Button, FormControl, Heading, Text, Textarea } from "@chakra-ui/react";
 import Auth from "../utils/auth";
 
 const CommentForm = ({ projectId }) => {

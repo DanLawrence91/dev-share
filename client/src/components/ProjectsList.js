@@ -40,3 +40,6 @@ const ProjectsList = ({ projects }) => {
 };
 
 export default ProjectsList;
+
+// if shows on dashboard then need delete and edit button
+// if shows on profile/:username need check this project out

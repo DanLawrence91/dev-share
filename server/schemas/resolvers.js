@@ -61,7 +61,7 @@ const resolvers = {
     },
     updateProject: async (parent, { projectId, description, contributors }, context) => {
       if (context.user) {
-        return Project.findOneAndUpdate({ _id: projectId }, { description }, { contributors }, { new: true });
+        return Project.findOneAndUpdate({ _id: projectId }, { description, contributors }, { new: true });
       }
 
       throw new AuthenticationError("You need to be logged in to edit a project");
@@ -70,7 +70,6 @@ const resolvers = {
       if (context.user) {
         const project = await Project.findOneAndDelete({
           _id: projectId,
-          owner: context.user.username,
         });
 
         await User.findOneAndUpdate({ _id: context.user._id }, { $pull: { projects: project._id } });

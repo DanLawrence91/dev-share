@@ -64,7 +64,7 @@ export const UPDATE_PROJECT = gql`
 export const REMOVE_PROJECT = gql`
   mutation removeProject($projectId: ID!) {
     removeProject(projectId: $projectId) {
-      projectId
+      _id
     }
   }
 `;
@@ -78,7 +78,6 @@ export const ADD_COMMENT = gql`
       link
       owner
       contributors
-      technology
       comments {
         _id
         commentText

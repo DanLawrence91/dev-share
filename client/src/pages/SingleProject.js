@@ -1,28 +1,42 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-
+import { useQuery, useMutation } from "@apollo/client";
+import { REMOVE_PROJECT } from "../utils/mutations";
 import CommentForm from "../components/CommentForm";
 import Comments from "../components/Comments";
 
 import { QUERY_SINGLE_PROJECT } from "../utils/queries";
 import Auth from "../utils/auth";
-import { Heading, Text, Icon, Stack, Flex, StackDivider } from "@chakra-ui/react";
+import { Heading, Text, Icon, Stack, Flex, StackDivider, Button } from "@chakra-ui/react";
 import { IoLogoGithub } from "react-icons/io5";
 import { MdDescription, MdShare, MdComment } from "react-icons/md";
 
 const SingleProject = () => {
   const { projectId } = useParams();
 
-  const { loading, data } = useQuery(QUERY_SINGLE_PROJECT, {
+  const { data } = useQuery(QUERY_SINGLE_PROJECT, {
     variables: { projectId: projectId },
   });
 
   const project = data?.project || {};
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  const [removeProject, { error }] = useMutation(REMOVE_PROJECT);
+
+  const handleDelete = async (event) => {
+    event.preventDefault();
+
+    try {
+      const { data } = await removeProject({
+        variables: {
+          _id: projectId,
+        },
+      });
+
+      window.location.assign("/");
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   const link = {
     color: "blue",
@@ -44,10 +58,50 @@ const SingleProject = () => {
     );
   };
 
+  if (!Auth.loggedIn()) {
+    return (
+      <Text fontSize={"lg"} p={10}>
+        You need to be logged in to share your view the dashboard. Please{" "}
+        <Link to="/login" style={link}>
+          login
+        </Link>{" "}
+        or{" "}
+        <Link to="/signup" style={link}>
+          signup.
+        </Link>
+      </Text>
+    );
+  }
+
   return (
     <div>
-      {Auth.loggedIn() ? (
-        <>
+      {Auth.getProfile().data.username === project.owner ? (
+        <div>
+          <Stack direction={"row"} justifyContent={"space-between"} px={5} mt={2}>
+            <Heading fontSize={"3xl"} mt={5} mx={5} color={"blue.700"} fontStyle={"italic"}>
+              Here is your project - {project.title}
+            </Heading>
+            <Stack>
+              <Button onClick={handleDelete}>Delete your project</Button>
+              <Button>Update your project</Button>
+            </Stack>
+            {error && <div>{error.message}</div>}
+          </Stack>
+          <Stack spacing={2} divider={<StackDivider borderColor={"gray.100"} />} p={3}>
+            <Text mx={4}>Please see some more information regarding the project below:</Text>
+
+            <Feature icon={<Icon as={MdDescription} color={"yellow.500"} w={5} h={5} />} text={project.description} />
+            <Feature icon={<Icon as={MdShare} color={"purple.500"} w={5} h={5} />} text={`People currently contributing to this project include: ${project.contributors}`} />
+            {/* Need to add functioning github link here */}
+            <Feature icon={<Icon as={IoLogoGithub} w={7} h={7} />} text={`Follow this link to the github repository: `} />
+            <Feature icon={<Icon as={MdComment} w={5} h={5} />} text={`Here is what others think of the project: `} />
+
+            <Comments comments={project.comments} />
+            <CommentForm projectId={project._id} />
+          </Stack>
+        </div>
+      ) : (
+        <div>
           <Heading fontSize={"3xl"} mx={10} mt={5} color={"blue.700"} fontStyle={"italic"}>
             <Link style={username} to={`/profile/${project.owner}`}>
               {project.owner}
@@ -63,24 +117,13 @@ const SingleProject = () => {
             <Feature icon={<Icon as={MdDescription} color={"yellow.500"} w={5} h={5} />} text={project.description} />
             <Feature icon={<Icon as={MdShare} color={"purple.500"} w={5} h={5} />} text={`People currently contributing to this project include: ${project.contributors}`} />
             {/* Need to add functioning github link here */}
-            <Feature icon={<Icon as={IoLogoGithub} w={7} h={7} />} text={`Follow this link to the github repository: <a href=${project.link}>Github repo</a>`} />
-            <Feature icon={<Icon as={MdComment} w={5} h={5} />} text={`Here is what others thing of the project: `} />
+            <Feature icon={<Icon as={IoLogoGithub} w={7} h={7} />} text={`Follow this link to the github repository`} />
+            <Feature icon={<Icon as={MdComment} w={5} h={5} />} text={`Here is what others think of the project: `} />
+
             <Comments comments={project.comments} />
             <CommentForm projectId={project._id} />
           </Stack>
-        </>
-      ) : (
-        <Text fontSize={"lg"} p={10}>
-          You must be logged in to add a project - please go to the{" "}
-          <Link to="/login" style={link}>
-            login
-          </Link>{" "}
-          or{" "}
-          <Link to="/signup" style={link}>
-            sign up
-          </Link>{" "}
-          pages.
-        </Text>
+        </div>
       )}
     </div>
   );
@@ -95,3 +138,25 @@ export default SingleProject;
 // Also will show contributors list
 // Maybe think about function to close project when complete? Make it no longer editable
 // if project owned by user they can have edit button to edit the description and contributors
+
+// cache stuff
+// , {
+//   update(cache, { data: { removeProject } }) {
+//     try {
+//       const { projects } = cache.readQuery({ query: QUERY_PROJECTS });
+
+//       cache.writeQuery({
+//         query: QUERY_PROJECTS,
+//         data: { projects: projects.filer((project) => project._id !== removeProject._id) },
+//       });
+//     } catch (e) {
+//       console.error(e);
+//     }
+
+//     const { me } = cache.readQuery({ query: QUERY_ME });
+//     cache.writeQuery({
+//       query: QUERY_ME,
+//       data: { me: { ...me, projects: [removeProject] } },
+//     });
+//   },
+// }

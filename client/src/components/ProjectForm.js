@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_PROJECT } from "../utils/mutations";
-import { QUERY_PROJECTS, QUERY_ME } from "../utils/queries";
+//import { QUERY_PROJECTS, QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
 
 import { Heading, Input, Button, Stack, FormControl, FormLabel, Textarea, Radio, RadioGroup, Flex } from "@chakra-ui/react";
@@ -17,26 +17,7 @@ const ProjectForm = () => {
     technology: "",
   });
 
-  const [addProject, { error }] = useMutation(ADD_PROJECT, {
-    update(cache, { data: { addProject } }) {
-      try {
-        const { projects } = cache.readQuery({ query: QUERY_PROJECTS });
-
-        cache.writeQuery({
-          query: QUERY_PROJECTS,
-          data: { projects: [addProject, ...projects] },
-        });
-      } catch (e) {
-        console.error(e);
-      }
-
-      const { me } = cache.readQuery({ query: QUERY_ME });
-      cache.writeQuery({
-        query: QUERY_ME,
-        data: { me: { ...me, projects: [...me.projects, addProject] } },
-      });
-    },
-  });
+  const [addProject, { error }] = useMutation(ADD_PROJECT);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -150,3 +131,23 @@ const ProjectForm = () => {
 export default ProjectForm;
 
 // auth.loggedin() showing true but giving error???
+// , {
+//   update(cache, { data: { addProject } }) {
+//     try {
+//       const { projects } = cache.readQuery({ query: QUERY_PROJECTS });
+
+//       cache.writeQuery({
+//         query: QUERY_PROJECTS,
+//         data: { projects: [addProject, ...projects] },
+//       });
+//     } catch (e) {
+//       console.error(e);
+//     }
+
+//     const { me } = cache.readQuery({ query: QUERY_ME });
+//     cache.writeQuery({
+//       query: QUERY_ME,
+//       data: { me: { ...me, projects: [...me.projects, addProject] } },
+//     });
+//   },
+// }
