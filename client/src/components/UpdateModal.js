@@ -32,7 +32,7 @@ function UpdateModal({ projectId, description, contributors }) {
         description: description,
         contributors: contributors,
       });
-      window.location.reload();
+      window.location.assign(`/projects/${projectId}`);
     } catch (e) {
       console.error(e);
     }

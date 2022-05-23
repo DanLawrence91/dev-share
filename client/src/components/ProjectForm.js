@@ -43,7 +43,7 @@ const ProjectForm = () => {
         technology: "",
       });
 
-      window.location.reload();
+      window.location.assign("/me");
     } catch (e) {
       console.error(e);
     }
