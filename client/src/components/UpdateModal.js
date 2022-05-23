@@ -32,6 +32,7 @@ function UpdateModal({ projectId, description, contributors }) {
         description: description,
         contributors: contributors,
       });
+      window.location.reload();
     } catch (e) {
       console.error(e);
     }

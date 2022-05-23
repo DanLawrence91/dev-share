@@ -31,6 +31,8 @@ const SingleProject = () => {
           projectId: projectId,
         },
       });
+
+      window.location.assign("/");
     } catch (e) {
       console.error(e);
     }
@@ -81,7 +83,7 @@ const SingleProject = () => {
             </Heading>
             <Stack>
               <Button onClick={handleDelete}>Delete your project</Button>
-              <UpdateModal projectId={project._id} description={project.description} contributors={project.contributors} />
+              {/* <UpdateModal projectId={project._id} description={project.description} contributors={project.contributors} /> */}
             </Stack>
             {error && <div>{error.message}</div>}
           </Stack>

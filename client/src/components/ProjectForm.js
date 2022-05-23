@@ -42,6 +42,8 @@ const ProjectForm = () => {
         contributors: "",
         technology: "",
       });
+
+      window.location.reload();
     } catch (e) {
       console.error(e);
     }
