@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_COMMENT } from "../utils/mutations";
 import { Button, FormControl, Heading, Text, Textarea } from "@chakra-ui/react";
-import Auth from "../utils/auth";
+import auth from "../utils/auth";
 
 const CommentForm = ({ projectId }) => {
   const [commentText, setCommentText] = useState("");
@@ -19,7 +19,7 @@ const CommentForm = ({ projectId }) => {
         variables: {
           projectId,
           commentText,
-          commentAuthor: Auth.getProfile().data.username,
+          commentAuthor: auth.getProfile().data.username,
         },
       });
       setCommentText("");
@@ -43,7 +43,7 @@ const CommentForm = ({ projectId }) => {
         What are your thoughts on this project?
       </Heading>
 
-      {Auth.loggedIn() ? (
+      {auth.loggedIn() ? (
         <>
           {error && <span>{error.message}</span>}
           <form onSubmit={handleFormSubmit}>

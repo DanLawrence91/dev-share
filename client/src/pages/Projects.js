@@ -1,5 +1,4 @@
 import React from "react";
-
 import { useQuery } from "@apollo/client";
 import ProjectsList from "../components/ProjectsList";
 import { QUERY_PROJECTS } from "../utils/queries";

@@ -2,12 +2,12 @@ import { Flex, Heading, Text } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/nav.css";
-import Auth from "../utils/auth";
+import auth from "../utils/auth";
 
 function Header() {
   const logout = (event) => {
     event.preventDefault();
-    Auth.logout();
+    auth.logout();
   };
 
   return (
@@ -17,7 +17,7 @@ function Header() {
           Project Share!{" "}
         </Heading>
       </Flex>
-      {Auth.loggedIn() ? (
+      {auth.loggedIn() ? (
         <Flex align="center" direction={{ base: "column", md: "row" }}>
           <Link to="/">
             <Text p={5}>Home</Text>

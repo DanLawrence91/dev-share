@@ -4,8 +4,7 @@ import { useQuery } from "@apollo/client";
 import ProjectsList from "../components/ProjectsList";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import { Container, Text, Stack, StackDivider } from "@chakra-ui/react";
-
-import Auth from "../utils/auth";
+import auth from "../utils/auth";
 
 const Profile = () => {
   const { username: userParam } = useParams();
@@ -14,7 +13,7 @@ const Profile = () => {
   });
   const user = data?.me || data?.user || {};
 
-  if (Auth.loggedIn && Auth.getProfile().data.username === userParam) {
+  if (auth.loggedIn && auth.getProfile().data.username === userParam) {
     return <Navigate to="/me" />;
   }
 
@@ -23,7 +22,7 @@ const Profile = () => {
     textDecoration: "underline",
   };
 
-  if (!Auth.loggedIn()) {
+  if (!auth.loggedIn()) {
     return (
       <Text fontSize={"lg"} p={10}>
         You need to be logged in to share your thoughts. Please{" "}

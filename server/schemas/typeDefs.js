@@ -36,7 +36,6 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     projects: [Project]
-    projectUser(username: String): [Project]
     project(projectId: ID!): Project
     me: User
   }

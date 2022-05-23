@@ -5,8 +5,7 @@ import ProjectForm from "../components/ProjectForm";
 import ProjectsList from "../components/ProjectsList";
 import { QUERY_ME } from "../utils/queries";
 import { Container, SimpleGrid, Flex, Text, Stack, StackDivider } from "@chakra-ui/react";
-
-import Auth from "../utils/auth";
+import auth from "../utils/auth";
 
 const Dashboard = () => {
   const { data } = useQuery(QUERY_ME);
@@ -17,7 +16,7 @@ const Dashboard = () => {
     textDecoration: "underline",
   };
 
-  if (!Auth.loggedIn()) {
+  if (!auth.loggedIn()) {
     return (
       <Text fontSize={"lg"} p={10}>
         You need to be logged in to share your view the dashboard. Please{" "}

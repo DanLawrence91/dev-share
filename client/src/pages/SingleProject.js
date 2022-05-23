@@ -1,15 +1,15 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
-import { REMOVE_PROJECT } from "../utils/mutations";
+import { REMOVE_PROJECT, UPDATE_PROJECT } from "../utils/mutations";
 import CommentForm from "../components/CommentForm";
 import Comments from "../components/Comments";
-
 import { QUERY_SINGLE_PROJECT } from "../utils/queries";
-import Auth from "../utils/auth";
+import auth from "../utils/auth";
 import { Heading, Text, Icon, Stack, Flex, StackDivider, Button } from "@chakra-ui/react";
 import { IoLogoGithub } from "react-icons/io5";
 import { MdDescription, MdShare, MdComment } from "react-icons/md";
+import UpdateModal from "../components/UpdateModal";
 
 const SingleProject = () => {
   const { projectId } = useParams();
@@ -56,7 +56,7 @@ const SingleProject = () => {
     );
   };
 
-  if (!Auth.loggedIn()) {
+  if (!auth.loggedIn()) {
     return (
       <Text fontSize={"lg"} p={10}>
         You need to be logged in to share your view the dashboard. Please{" "}
@@ -73,7 +73,7 @@ const SingleProject = () => {
 
   return (
     <div>
-      {Auth.getProfile().data.username === project.owner ? (
+      {auth.getProfile().data.username === project.owner ? (
         <div>
           <Stack direction={"row"} justifyContent={"space-between"} px={5} mt={2}>
             <Heading fontSize={"3xl"} mt={5} mx={5} color={"blue.700"} fontStyle={"italic"}>
@@ -81,7 +81,7 @@ const SingleProject = () => {
             </Heading>
             <Stack>
               <Button onClick={handleDelete}>Delete your project</Button>
-              <Button>Update your project</Button>
+              <UpdateModal projectId={project._id} />
             </Stack>
             {error && <div>{error.message}</div>}
           </Stack>

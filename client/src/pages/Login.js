@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
-import Auth from "../utils/auth";
+import auth from "../utils/auth";
 import { Flex, Heading, Input, Text, Button, Stack, Box, Avatar, FormControl, FormLabel } from "@chakra-ui/react";
 
 const Login = (props) => {
@@ -26,7 +26,7 @@ const Login = (props) => {
         variables: { ...formState },
       });
 
-      Auth.login(data.login.token);
+      auth.login(data.login.token);
     } catch (e) {
       console.error(e);
     }

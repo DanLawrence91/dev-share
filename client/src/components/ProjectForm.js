@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_PROJECT } from "../utils/mutations";
 //import { QUERY_PROJECTS, QUERY_ME } from "../utils/queries";
-import Auth from "../utils/auth";
+import auth from "../utils/auth";
 
 import { Heading, Input, Button, Stack, FormControl, FormLabel, Textarea, Radio, RadioGroup, Flex } from "@chakra-ui/react";
 
@@ -51,7 +51,7 @@ const ProjectForm = () => {
 
   return (
     <div>
-      {Auth.loggedIn() ? (
+      {auth.loggedIn() ? (
         <>
           <Heading>What project are you looking to collaborate one?</Heading>
 
@@ -130,7 +130,6 @@ const ProjectForm = () => {
 
 export default ProjectForm;
 
-// auth.loggedin() showing true but giving error???
 // , {
 //   update(cache, { data: { addProject } }) {
 //     try {
