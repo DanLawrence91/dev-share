@@ -28,11 +28,9 @@ const SingleProject = () => {
     try {
       const { data } = await removeProject({
         variables: {
-          _id: projectId,
+          projectId: projectId,
         },
       });
-
-      window.location.assign("/");
     } catch (e) {
       console.error(e);
     }
