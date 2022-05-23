@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
-import { REMOVE_PROJECT, UPDATE_PROJECT } from "../utils/mutations";
+import { REMOVE_PROJECT } from "../utils/mutations";
 import CommentForm from "../components/CommentForm";
 import Comments from "../components/Comments";
 import { QUERY_SINGLE_PROJECT } from "../utils/queries";
@@ -81,7 +81,7 @@ const SingleProject = () => {
             </Heading>
             <Stack>
               <Button onClick={handleDelete}>Delete your project</Button>
-              <UpdateModal projectId={project._id} />
+              <UpdateModal projectId={project._id} description={project.description} contributors={project.contributors} />
             </Stack>
             {error && <div>{error.message}</div>}
           </Stack>

@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { UPDATE_PROJECT } from "../utils/mutations";
 
-function UpdateModal({ projectId }) {
-  const [formState, setFormState] = useState({ description: "", contributors: "" });
+function UpdateModal({ projectId, description, contributors }) {
+  const [formState, setFormState] = useState({ description: description, contributors: contributors });
   const [updateProject, { error }] = useMutation(UPDATE_PROJECT);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -29,8 +29,8 @@ function UpdateModal({ projectId }) {
       });
 
       setFormState({
-        description: "",
-        contributors: "",
+        description: description,
+        contributors: contributors,
       });
       window.location.reload();
     } catch (e) {
