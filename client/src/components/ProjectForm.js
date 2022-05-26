@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_PROJECT } from "../utils/mutations";
-//import { QUERY_PROJECTS, QUERY_ME } from "../utils/queries";
 import auth from "../utils/auth";
 
 import { Heading, Input, Button, Stack, FormControl, FormLabel, Textarea, Radio, RadioGroup, Flex } from "@chakra-ui/react";

@@ -145,33 +145,3 @@ const SingleProject = () => {
 };
 
 export default SingleProject;
-
-// Will show in detail about one project
-// Title and owner contact details at top
-// Section for description below
-// Maybe list of tech below this in column with comments next to it
-// Also will show contributors list
-// Maybe think about function to close project when complete? Make it no longer editable
-// if project owned by user they can have edit button to edit the description and contributors
-
-// cache stuff
-// , {
-//   update(cache, { data: { removeProject } }) {
-//     try {
-//       const { projects } = cache.readQuery({ query: QUERY_PROJECTS });
-
-//       cache.writeQuery({
-//         query: QUERY_PROJECTS,
-//         data: { projects: projects.filer((project) => project._id !== removeProject._id) },
-//       });
-//     } catch (e) {
-//       console.error(e);
-//     }
-
-//     const { me } = cache.readQuery({ query: QUERY_ME });
-//     cache.writeQuery({
-//       query: QUERY_ME,
-//       data: { me: { ...me, projects: [removeProject] } },
-//     });
-//   },
-// }

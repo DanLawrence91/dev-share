@@ -51,5 +51,3 @@ const typeDefs = gql`
 `;
 
 module.exports = typeDefs;
-
-// owner in tech may be user - need to see how to link best
