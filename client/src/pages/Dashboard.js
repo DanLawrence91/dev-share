@@ -36,7 +36,7 @@ const Dashboard = () => {
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
         <Stack spacing={4}>
           <Text textTransform={"uppercase"} color={"blue.400"} fontWeight={600} fontSize={"sm"} bg={"blue.50"} p={2} alignSelf={"flex-start"} rounded={"md"}>
-            Your Profile
+            Your Profile {user.email}
           </Text>
 
           <Stack spacing={4} divider={<StackDivider borderColor={"gray.100"} />}>
