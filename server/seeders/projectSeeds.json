@@ -1,0 +1,58 @@
+[
+  {
+    "title": "Coding Quiz",
+    "description": "A simple quiz to show frontend JavaScript skills, including using multiple pages and a timer, as well as giving a score and ranking a leaderboard",
+    "link": "https://github.com/DanLawrence91/Coding--Quiz",
+    "contributors": "",
+    "technology": "JavaScript",
+    "owner": "Ellie1909"
+  },
+  {
+    "title": "Day Planner",
+    "description": "A day planner that uses local storage to save events throughout the day and changes color when the time has passed in the day to show what hour it is",
+    "link": "https://github.com/DanLawrence91/day-planner",
+    "contributors": "Ellie1909",
+    "technology": "JavaScript",
+    "owner": "Jonny94"
+  },
+  {
+    "title": "Sport Travel Guider",
+    "description": "A full stack project following MVC architecture that gives information about the teams in the English Premier League to help with travel plans including upcoming fixtures and local restaurants ",
+    "link": "https://github.com/DanLawrence91/team-project",
+    "contributors": "",
+    "technology": "JavaScript",
+    "owner": "DanLawrence91"
+  },
+  {
+    "title": "Clothes recommendation",
+    "description": "An online clothing store taking users past purchases and wishlist to recommend related products to them, part of a larger e-commerce project",
+    "link": "https://dummyprojectphplink.com",
+    "contributors": "DevElaine",
+    "technology": "PHP",
+    "owner": "SimonCode"
+  },
+  {
+    "title": "Rock, paper, scissors",
+    "description": "A simple rock, paper, scissors game that can be played among friends or against the computer",
+    "link": "https://dummyprojectpython.com",
+    "contributors": "",
+    "technology": "Python",
+    "owner": "DevElaine"
+  },
+  {
+    "title": "Event Manager",
+    "description": "A project where CSV files can be manually uploaded to help manage upcoming events for an event management company",
+    "link": "https://dummyprojectruby.com",
+    "contributors": "",
+    "technology": "Ruby",
+    "owner": "Jonny94"
+  },
+  {
+    "title": "Mood logging mobile app",
+    "description": "An app to help log your mood and keep track of mental health, break intervals from work, and how often you socialise",
+    "link": "https://dummyprojectswift.com",
+    "contributors": "",
+    "technology": "Swift",
+    "owner": "Ellie1909"
+  }
+]

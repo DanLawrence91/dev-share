@@ -1,0 +1,27 @@
+[
+  {
+    "username": "DanLawrence91",
+    "email": "dan@test.com",
+    "password": "abcd1234"
+  },
+  {
+    "username": "Ellie1909",
+    "email": "ellie@test.com",
+    "password": "abcd1234"
+  },
+  {
+    "username": "Jonny94",
+    "email": "jonny@test.com",
+    "password": "abcd1234"
+  },
+  {
+    "username": "SimonCodes",
+    "email": "simon@test.com",
+    "password": "abcd1234"
+  },
+  {
+    "username": "DevElaine",
+    "email": "elaine@test.com",
+    "password": "abcd1234"
+  }
+]
