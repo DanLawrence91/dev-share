@@ -48,9 +48,9 @@ const resolvers = {
 
       return { token, user };
     },
-    addProject: async (parent, { title, description, link, owner, contributors, technology }, context) => {
+    addProject: async (parent, { title, description, link, contributors, technology }, context) => {
       if (context.user) {
-        const project = await Project.create({ title, description, link, owner, contributors, technology });
+        const project = await Project.create({ title, description, link, owner: context.user.username, contributors, technology });
 
         await User.findOneAndUpdate({ _id: context.user._id }, { $addToSet: { projects: project._id } });
 

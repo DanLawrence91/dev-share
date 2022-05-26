@@ -10,7 +10,6 @@ import auth from "../utils/auth";
 const Dashboard = () => {
   const { data } = useQuery(QUERY_ME);
   const user = data?.me || {};
-  console.log(user);
 
   const link = {
     color: "blue",

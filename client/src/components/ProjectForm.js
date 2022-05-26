@@ -12,7 +12,6 @@ const ProjectForm = () => {
     title: "",
     description: "",
     link: "",
-    owner: "",
     contributors: "",
     technology: "",
   });
@@ -31,6 +30,7 @@ const ProjectForm = () => {
       const { data } = await addProject({
         variables: {
           ...formState,
+          owner: auth.getProfile().data.username,
         },
       });
 
@@ -38,7 +38,6 @@ const ProjectForm = () => {
         title: "",
         description: "",
         link: "",
-        owner: "",
         contributors: "",
         technology: "",
       });
@@ -68,10 +67,6 @@ const ProjectForm = () => {
               <FormControl isRequired p={3}>
                 <FormLabel htmlFor="link">Link to repository</FormLabel>
                 <Input placeholder="Project Link" name="link" type="text" value={formState.link} onChange={handleChange} />
-              </FormControl>
-              <FormControl isRequired p={3}>
-                <FormLabel htmlFor="owner">Owner</FormLabel>
-                <Input placeholder="Please enter your username" name="owner" type="text" value={formState.owner} onChange={handleChange} />
               </FormControl>
               <FormControl p={3}>
                 <FormLabel htmlFor="contributors">Contributors</FormLabel>
