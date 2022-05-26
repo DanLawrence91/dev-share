@@ -23,6 +23,7 @@ const CommentForm = ({ projectId }) => {
         },
       });
       setCommentText("");
+      setCharacterCount(0);
     } catch (err) {
       console.error(err);
     }

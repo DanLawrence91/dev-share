@@ -1,5 +1,6 @@
 import { Heading, Flex, Text, Box } from "@chakra-ui/react";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Comments = ({ comments = [] }) => {
   if (!comments.length) {
@@ -18,7 +19,9 @@ const Comments = ({ comments = [] }) => {
             comments.map((comment) => (
               <Flex py={2} mx={10} key={comment._id} justifyContent={"center"}>
                 <Box bg={"blue.50"} boxShadow={"lg"} rounded={"lg"} p={3} textAlign={"center"}>
-                  <Heading fontSize={"md"}>{comment.commentAuthor} commented:</Heading>
+                  <Heading fontSize={"md"}>
+                    <Link to={`/profile/${comment.commentAuthor}`}>{comment.commentAuthor}</Link> commented:
+                  </Heading>
                   <Text textAlign={"center"}>{comment.commentText}</Text>
                 </Box>
               </Flex>
