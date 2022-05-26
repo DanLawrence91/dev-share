@@ -10,7 +10,6 @@ const Signup = () => {
     username: "",
     email: "",
     password: "",
-    github: "",
   });
   const [addUser, { error, data }] = useMutation(ADD_USER);
 
@@ -54,10 +53,6 @@ const Signup = () => {
                   <FormControl isRequired p={3}>
                     <FormLabel htmlFor="username">Username</FormLabel>
                     <Input type="text" placeholder="Your username" name="username" value={formState.username} onChange={handleChange} />
-                  </FormControl>
-                  <FormControl isRequired p={3}>
-                    <FormLabel htmlFor="github">Github</FormLabel>
-                    <Input type="text" placeholder="Your github username" name="github" value={formState.github} onChange={handleChange} />
                   </FormControl>
                   <FormControl isRequired p={3}>
                     <FormLabel htmlFor="email">Email</FormLabel>

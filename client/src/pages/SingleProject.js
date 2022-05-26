@@ -128,7 +128,6 @@ const SingleProject = () => {
 
             <Feature icon={<Icon as={MdDescription} color={"yellow.500"} w={5} h={5} />} text={project.description} />
             <Feature icon={<Icon as={MdShare} color={"purple.500"} w={5} h={5} />} text={`People currently contributing to this project include: ${project.contributors}`} />
-            {/* Need to add functioning github link here */}
             <Feature icon={<Icon as={IoLogoGithub} w={7} h={7} />} text={`Follow the link below to the github repository: `} />
             <div>
               <a style={github} href={`${project.link}`}>

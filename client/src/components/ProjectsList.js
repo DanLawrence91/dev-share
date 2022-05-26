@@ -17,7 +17,7 @@ const ProjectsList = ({ projects }) => {
 
                 <Stack align={"center"} justify={"center"} direction={"row"} mb={6}>
                   <Badge px={2} py={1} bg={"gray.200"} fontWeight={"400"}>
-                    #{project.technology}
+                    #{"  "} {project.technology}
                   </Badge>
                 </Stack>
 
@@ -40,6 +40,3 @@ const ProjectsList = ({ projects }) => {
 };
 
 export default ProjectsList;
-
-// if shows on dashboard then need delete and edit button
-// if shows on profile/:username need check this project out

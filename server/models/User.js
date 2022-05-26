@@ -19,10 +19,6 @@ const userSchema = new Schema({
     required: true,
     minlength: 6,
   },
-  github: {
-    type: String,
-    required: true,
-  },
   projects: [
     {
       type: Schema.Types.ObjectId,

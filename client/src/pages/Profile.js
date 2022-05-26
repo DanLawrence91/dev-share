@@ -47,7 +47,7 @@ const Profile = () => {
           Here you can see a list of their current projects that need fellow developers to collaborate with.
         </Text>
         <Text color={"gray.500"} fontSize={"lg"}>
-          Contact them on {user.email} to get collaborating!
+          Contact them on <a href={`mailto:${user.email}`}>{user.email}</a> to get collaborating!
         </Text>
 
         <Stack spacing={4} divider={<StackDivider borderColor={"gray.100"} />}>
