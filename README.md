@@ -22,6 +22,29 @@ The project will need to be cloned from the repo and then run `npm install`. Thi
 
 ## Usage
 
+This project has been intended so that junior developers can use it to find new projects to work on and build up experience.
+
+The home page explains the website and provides a dahsboard and button for navigation:
+![Home page](./images/readme1.png)
+
+The user can then go to a page that lists the current projects on the website:
+![Projects page](./images/readme2.png)
+
+On this page there is a description of the website again, as well as the projects shown as cards on the page:
+![Extended projects page](./images/readme3.png)
+
+If a user is not logged in this is the only other page they can see as shown below - they cannot view single projects or the dashboard:
+![Sign in prompt](./images/readme4.png)
+
+The dashboard allows you to add new projects and see your current projects:
+![Dashboard view](./images/readme5.png)
+
+If viewing one of your own projects on the single project page you have the option to update or delete the project:
+![Own single project view](./images/readme6.png)
+
+If viewing someone else's project in more detail you can only add comments:
+![Other users single project view](./images/readme7.png)
+
 ## License
 
 This project is MIT licensed, please see the badge at the top of the page and associated file in repository
