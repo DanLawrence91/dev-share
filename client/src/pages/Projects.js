@@ -41,12 +41,12 @@ const Projects = () => {
           <Feature
             icon={<Icon as={IoArrowForward} color={"green.500"} w={5} h={5} />}
             iconBg={"green.100"}
-            text={"Once you have found a project you would like to work on, reach out to the owner with suggestions for the project or areas you would like to contribute to wihtin that project."}
+            text={"Once you have found a project you would like to work on, reach out to the owner with suggestions for the project or areas you would like to contribute to within that project."}
           />
           <Feature
             icon={<Icon as={IoArrowForward} color={"purple.500"} w={5} h={5} />}
             iconBg={"purple.100"}
-            text={"This is a community where we encourage beginners in the industry to build their network and find projects that they can contribute to and build connections with experienced developers looking for help."}
+            text={"This is a community where we encourage beginners in the industry to build their network and find projects that they can contribute to, and build connections with experienced developers looking for help."}
           />
         </Stack>
       </Stack>
