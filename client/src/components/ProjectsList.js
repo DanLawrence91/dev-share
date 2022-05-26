@@ -5,7 +5,7 @@ import { Box, Flex, Text, Stack, Button, Heading, Badge } from "@chakra-ui/react
 const ProjectsList = ({ projects }) => {
   return (
     <div>
-      <Flex direction={"row"} wrap={"wrap"}>
+      <Flex direction={"row"} wrap={"wrap"} justifyContent={"center"}>
         {projects &&
           projects.map((project) => (
             <Flex py={6} key={project._id} mx={10} justifyContent={"center"}>

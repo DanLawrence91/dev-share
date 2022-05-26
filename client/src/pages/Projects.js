@@ -50,8 +50,8 @@ const Projects = () => {
           />
         </Stack>
       </Stack>
-      <Flex direction={"row"}>
-        <ProjectsList projects={projects} title="Some projects looking for your help!" />
+      <Flex direction={"row"} justifyContent={"center"}>
+        <ProjectsList projects={projects} />
       </Flex>
     </Container>
   );
