@@ -62,3 +62,5 @@ This website is deployed on Heroku at the following [link](https://serene-spire-
 If there are any questions regarding this project please contact me through my email - dan.lawrence0810@gmail.com
 
 Or please visit my GitHub profile which has further contact information - [DanLawrence91](https://github.com/DanLawrence91)
+
+A presentation on the project can be found at this [link](https://docs.google.com/presentation/d/1c396s9xQC4FTblammwdVltw2CYupLQFjlyFig2KOaqQ/edit?usp=sharing)
