@@ -6,6 +6,10 @@
 
 The aim of this project is to create an environment where developers can log in and detail projects and websites they are building but may not have time to complete and learn necessary languages required for the project. By providing details of the project and what it entails, fellow developers can then either leave comments to assist, or they can get in touch with the developer to offer to collaborate on the project and offer to work with them on it.
 
+## User Story
+
+`As a new developer I want a website that shows current projects looking for collaboration so that I can gain experience and be more employable`
+
 ## Technology used
 
 - React
